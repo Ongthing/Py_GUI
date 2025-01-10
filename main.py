@@ -1,4 +1,214 @@
-# temperature of scale
+
+# 
+# Graphical
+# User
+# Interface
+
+
+# 
+# widgets = GUI elements: buttons, textboxes, labels, image
+# window = serves as a container to hold or contain these widgets
+
+from tkinter import *
+window = Tk() # instantiate an instance of a window
+window.geometry("420x420")
+window.title("Ongthing first GUI Program")
+
+icon = PhotoImage(file='thumb-1920-1337527.png')
+window.iconphoto(True,icon)
+window.config(background="black") # you can set # value
+
+
+window.mainloop() # place window on computer screen, listen for events
+
+# label
+# an area widget that holds text and/or an image within a window
+# from tkinter import *
+
+window = Tk()
+
+
+photo = PhotoImage(file='FKbqpDHYxsDeGfcraQYk2B-320-80.png')
+
+
+label = Label(window,
+              text="Hello World",
+              font=('arial',40,'bold'),
+              fg='green', # you can use '#00FF00'
+              bg='black',
+              relief=RAISED, # SUNKEN . and that is border style
+              bd=10, # border size
+              padx=20, # width border space
+              pady=20,   # length text and border
+              image=photo,
+              compound='bottom') # 'top' .photo move
+label.pack() # write note display world
+
+#label.place(x=0,y=0) # position text
+
+
+window.mainloop()
+
+
+# 
+# button = you click it, then it does stuff
+from tkinter import *
+
+count = 0
+
+def click():
+    global count
+    count += 1
+    print(count)
+    print("you click the button")
+
+window = Tk()
+
+
+photo = PhotoImage(file='img.png')
+button = Button(window,text="click me!",
+                fg='#00FF00',
+                bg='black',
+                command=click,
+                image=photo,
+                activeforeground='#00FF00',
+                activebackground='black',
+                compound='bottom',)
+                #state=DISABLED) # disabled click
+button.pack()
+
+window.mainloop()
+
+# 
+# entry widget = text box that accepts a single line of users input
+
+from tkinter import *
+
+
+def submit():
+    user_name = entry.get()
+    print(user_name)
+
+def delete():
+    entry.delete(0,END)
+
+def backspace():
+    entry.delete(len(entry.get())-1, END)
+
+
+window = Tk()
+entry = Entry(window,font=('arial',40),
+              fg='#00FF00',
+              bg='black')
+
+# entry.insert(0,'spongebob')
+# entry.config(show="*")
+# entry.config(state=DISABLED)
+
+
+entry.pack(side=LEFT)
+
+submit_button = Button(window,text="submit",command=submit)
+submit_button.pack(side=RIGHT)
+
+delete_button = Button(window,text="delete",command=delete)
+delete_button.pack(side=RIGHT)
+
+back_space_button = Button(window,text="backspace",command=backspace)
+back_space_button.pack(side=RIGHT)
+
+window.mainloop()
+
+
+
+
+
+# check_button
+
+from tkinter import *
+
+def display():
+    if (x.get()==1): # if (x.get)) # if (x.get()=="Yes")
+        print("You agree!")
+    else:
+        print("You don't agree:(")
+
+window = Tk()
+
+x = IntVar() # onvalue= 1 offvalue = 0
+# x = BooleanVar() # onevalue = True offvalue=False
+# x = StringVar()
+
+photo = PhotoImage(file='img_1.png')
+check_button = Checkbutton(window,text= 'I agree to something',
+                           variable=x,
+                           onvalue=1, # True # 'Yes'
+                           offvalue=0, # False # 'No'
+                           command=display,
+                           font=('Arial',20),
+                           fg='#00FF00',
+                           bg='black',
+                           activebackground='black',
+                           activeforeground='#00FF00',
+                           pady=10,
+                           padx=20,
+                           image=photo,
+                           compound='right')
+
+check_button.pack()
+window.mainloop()
+
+
+
+
+# radio button = similar to checkbox, but you can only select one from a group
+
+from tkinter import *
+
+food = ['pizza','hamburger','hotdog']
+
+def order():
+    if(x.get()==0):
+        print("You ordered pizza!")
+    elif(x.get()==1):
+        print("You ordered hamburger!")
+    elif(x.get()==2):
+        print("You ordered hotdog!")
+    else:
+        print("Huh")
+window = Tk()
+pizza_image = PhotoImage(file='img_2.png')
+hamburger_image = PhotoImage(file='img_3.png')
+hotdog_image = PhotoImage(file='img_4.png')
+food_image = [pizza_image,hamburger_image,hotdog_image]
+
+
+x = IntVar()
+
+for index in range(len(food)):
+    radiobutton = Radiobutton(window,
+                              text=food[index], # adds text to radio buttons
+                              variable=x, # groups radiobuttons together if they share the variable
+                              value=index, # assigns each radiobutton a different value
+                              padx=500, # adds padding on x-axis
+                              font=('impact',50),
+                              image=food_image[index], # adds image to radiobutton
+                              compound='left', # adds image & text (left-side)
+                              indicatoron=1, # eliminate circle indicators
+                              width=2000, # sets width of radio buttons
+                              command=order # set command of radio button to function
+                              )
+    radiobutton.pack(anchor=W)
+
+
+
+window.mainloop()
+
+# tkinter temperature scale
+
+
+
+
 from tkinter import *
 
 def submit():
